@@ -1,8 +1,14 @@
-# working with files and consuming WebService
+# Working with files and consuming WebService
+
+## Tecnologias utilizadas
+- Java 17
+- HttpClient
+- HttpRequest
+- HttpResponse
 
 ## 🔨 Informações úteis
 
-Os códigos de status variam de 100 a 599 e são divididos em cinco classes:
+### Os códigos de status variam de 100 a 599 e são divididos em cinco classes:
 
 - 1xx: Informações
 - 2xx: Sucesso
