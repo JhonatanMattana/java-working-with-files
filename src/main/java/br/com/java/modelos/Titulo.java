@@ -1,12 +1,21 @@
 package br.com.java.modelos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Titulo implements Comparable<Titulo> {
+	@SerializedName(value = "Title")
     private String nome;
+	
+	@SerializedName(value = "Year")
     private int anoDeLancamento;
-    private boolean incluidoNoPlano;
-    private double somaDasAvaliacoes;
-    private int totalDeAvaliacoes;
-    private int duracaoEmMinutos;
+    
+	private boolean incluidoNoPlano;
+    
+	private double somaDasAvaliacoes;
+    
+	private int totalDeAvaliacoes;
+    
+	private int duracaoEmMinutos;
 
     public Titulo(String nome, int anoDeLancamento) {
         this.nome = nome;
