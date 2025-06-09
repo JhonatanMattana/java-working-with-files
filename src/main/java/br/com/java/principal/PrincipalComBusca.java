@@ -25,14 +25,10 @@ public class PrincipalComBusca {
 			
 			var busca = leitura.nextLine();
 
-			var endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apiKey=" + apiKey;
-
 			try {
-				HttpResponse<String> response = SenderResources.send(endereco);
+				String jsonFilme = consultarFilme(apiKey, busca);
 
-				String jsonBody = response.body();
-
-				TituloOmdb tituloOmdb = (TituloOmdb) convertJsonToObject(jsonBody, TituloOmdb.class);
+				TituloOmdb tituloOmdb = (TituloOmdb) convertJsonToObject(jsonFilme, TituloOmdb.class);
 				
 				escrita = criarFile();
 				
@@ -53,6 +49,12 @@ public class PrincipalComBusca {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	private static String consultarFilme(String apiKey, String busca) {
+		var endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apiKey=" + apiKey;
+		HttpResponse<String> response = SenderResources.send(endereco);
+		return response.body();
 	}
 
 	private static void escreverNoFile(TituloOmdb tituloOmdb, String json) throws IOException {
